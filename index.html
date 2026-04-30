@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Digital101 AI — Create. Package. Sell.</title>
+<meta name="description" content="AI-powered digital product business builder for beginners. Create product ideas, Canva prompts, Etsy listings, pricing strategy, and launch plans in minutes."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0B1220;
+  --navy2:#0F1A2E;
+  --navy3:#141E30;
+  --blue:#2563EB;
+  --blue2:#1D4ED8;
+  --gold:#FBBF24;
+  --gold2:#D97706;
+  --white:#F8FAFC;
+  --slate:#475569;
+  --muted:#64748B;
+  --border:#1E2D45;
+  --green:#10B981;
+  --red:#EF4444;
+  --purple:#8B5CF6;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(11,18,32,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;}
+.logo-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--navy3),var(--navy2));border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;}
+.logo-icon svg{width:28px;height:28px;}
+.logo-text .brand{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--white);line-height:1;}
+.logo-text .brand span{color:var(--gold);}
+.logo-text .tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:2px;}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:8px 14px;border-radius:8px;transition:color 0.2s;cursor:pointer;}
+.nav-link:hover{color:var(--white);}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue);background:transparent;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.btn-outline:hover{background:var(--blue);color:#fff;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:10px 22px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all 0.2s;}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(251,191,36,0.35);}
+.btn-gold-lg{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:16px 36px;border:none;border-radius:10px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Syne',sans-serif;transition:all 0.25s;display:inline-block;}
+.btn-gold-lg:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(251,191,36,0.4);}
+.btn-blue-lg{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:14px 32px;border:2px solid transparent;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all 0.2s;}
+.btn-blue-lg:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,99,235,0.35);}
+
+/* ── SECTIONS ── */
+section{padding:80px 24px;}
+.container{max-width:1100px;margin:0 auto;}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:14px;}
+.section-sub{font-size:clamp(14px,2vw,17px);color:var(--muted);line-height:1.8;max-width:580px;}
+.center{text-align:center;}
+.center .section-sub{margin:0 auto;}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;padding-bottom:60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,0.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(251,191,36,0.08) 0%,transparent 60%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:40px;padding:6px 16px;font-size:12px;color:var(--gold);margin-bottom:20px;font-weight:500;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;animation:pulse 2s infinite;}
+.hero-title{font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.1;margin-bottom:18px;}
+.hero-title em{color:var(--gold);font-style:normal;}
+.hero-desc{font-size:16px;color:var(--muted);line-height:1.9;margin-bottom:32px;max-width:480px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-trust{display:flex;gap:20px;margin-top:28px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);}
+.trust-item svg{color:var(--green);}
+/* Hero right — dashboard mockup */
+.hero-mockup{background:var(--navy2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5),0 0 0 1px rgba(251,191,36,0.1);animation:float 6s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.mockup-bar{background:var(--navy3);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.mockup-dots{display:flex;gap:5px;}
+.mockup-dots span{width:10px;height:10px;border-radius:50%;}
+.mockup-title{font-size:11px;color:var(--muted);margin-left:8px;font-family:'Syne',sans-serif;}
+.mockup-body{padding:20px;}
+.mockup-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.mockup-brand{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--white);}
+.mockup-brand em{color:var(--gold);font-style:normal;}
+.mockup-sparks{text-align:right;}
+.mockup-sparks small{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;display:block;}
+.mockup-sparks strong{font-size:22px;color:var(--gold);font-family:'Syne',sans-serif;}
+.tool-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;transition:all 0.2s;cursor:pointer;}
+.tool-card:hover{border-color:var(--gold);background:rgba(251,191,36,0.05);}
+.tool-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.tool-info small{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.tool-info p{font-size:13px;font-weight:600;color:var(--white);margin-top:2px;}
+.tool-arrow{margin-left:auto;color:var(--muted);font-size:16px;}
+.mockup-nav{display:flex;justify-content:space-around;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:4px;}
+.nav-tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);cursor:pointer;}
+.nav-tab.active{color:var(--gold);}
+.nav-tab-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+
+/* ── FEATURES STRIP ── */
+.features-strip{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 24px;overflow:hidden;}
+.strip-inner{display:flex;gap:48px;white-space:nowrap;animation:marquee 25s linear infinite;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.strip-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);flex-shrink:0;}
+.strip-item span{color:var(--gold);font-size:16px;}
+
+/* ── TOOLS GRID ── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:48px;}
+.tool-feature-card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden;}
+.tool-feature-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(251,191,36,0.04));pointer-events:none;}
+.tool-feature-card:hover{border-color:rgba(251,191,36,0.4);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+.tf-step{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;}
+.tf-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;}
+.tf-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.tf-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* ── EXAMPLES SECTION ── */
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:48px;}
+.ex-card{background:var(--navy2);border:1px solid var(--border);border-radius:14px;padding:22px;transition:all 0.2s;}
+.ex-card:hover{border-color:var(--blue);transform:translateY(-3px);}
+.ex-type{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.ex-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.3;}
+.ex-platform{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.ex-price{font-size:22px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif;}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:48px;}
+.plan-card{background:var(--navy2);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;transition:all 0.3s;}
+.plan-card.popular{border-color:var(--blue);background:rgba(37,99,235,0.06);}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.35);}
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:10px;padding:4px 16px;border-radius:20px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;font-weight:700;}
+.plan-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:6px;}
+.plan-price{font-size:42px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif;line-height:1;}
+.plan-price span{font-size:16px;color:var(--muted);font-weight:400;}
+.plan-trial{font-size:12px;color:var(--green);margin:10px 0 18px;}
+.plan-divider{height:1px;background:var(--border);margin:20px 0;}
+.plan-feature{display:flex;gap:10px;padding:7px 0;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+.plan-feature .check{color:var(--green);flex-shrink:0;}
+.plan-feature .cross{color:var(--border);flex-shrink:0;}
+.plan-btn{width:100%;margin-top:24px;padding:14px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;border:none;transition:all 0.2s;}
+
+/* ── FAQ ── */
+.faq-list{margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--navy2);}
+.faq-q{padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:var(--white);transition:background 0.2s;}
+.faq-q:hover{background:rgba(255,255,255,0.03);}
+.faq-q.open{color:var(--gold);}
+.faq-icon{font-size:18px;color:var(--blue);transition:transform 0.3s;flex-shrink:0;}
+.faq-icon.open{transform:rotate(45deg);}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:all 0.3s;font-size:14px;color:var(--muted);line-height:1.8;}
+.faq-a.open{padding:4px 24px 20px;max-height:300px;}
+
+/* ── CHECKOUT MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--navy2);border:1px solid var(--border);border-radius:20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal-header{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:center;}
+.modal-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);}
+.modal-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;}
+.modal-body{padding:24px;}
+.form-group{margin-bottom:14px;}
+.form-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.form-input{width:100%;background:#07101E;border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--white);font-size:14px;outline:none;font-family:inherit;transition:border-color 0.2s;}
+.form-input:focus{border-color:var(--blue);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.coupon-row{display:flex;gap:8px;}
+.coupon-row .form-input{flex:1;}
+.apply-btn{background:rgba(37,99,235,0.2);border:1px solid var(--blue);color:var(--blue);padding:0 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.order-box{background:#07101E;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:18px;}
+.order-row{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;border-bottom:1px solid var(--border);}
+.order-row:last-child{border:none;}
+.order-row.total{font-weight:700;font-size:16px;padding-top:12px;}
+.order-row.total .amount{color:var(--gold);}
+.secure-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.7;}
+.coupon-success{color:var(--green);font-size:12px;margin-top:6px;}
+.coupon-error{color:var(--red);font-size:12px;margin-top:6px;}
+.trial-badge{background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#6EE7B7;line-height:1.7;}
+
+/* ── WELCOME MODAL ── */
+.welcome-modal{max-width:520px;}
+.welcome-hero{background:linear-gradient(135deg,var(--navy3),#0D1930);padding:40px 32px;text-align:center;border-bottom:1px solid var(--border);}
+.welcome-emoji{font-size:60px;margin-bottom:12px;}
+.welcome-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--white);margin-bottom:8px;}
+.welcome-sub{font-size:14px;color:var(--muted);line-height:1.7;}
+.welcome-body{padding:28px 28px 24px;}
+.confirm-box{background:#07101E;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:18px;}
+.confirm-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--border);}
+.confirm-row:last-child{border:none;}
+.confirm-row .val{color:var(--white);font-weight:600;}
+.steps-list{margin-bottom:20px;}
+.step-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;}
+.step-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.step-text{font-size:13px;color:var(--muted);}
+.disclaimer-box{background:#1A1000;border:1px solid #D97706;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:11px;color:#D4A017;line-height:1.7;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:48px 24px 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand .brand{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:6px;}
+.footer-brand .brand span{color:var(--gold);}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;max-width:280px;}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:14px;letter-spacing:1px;}
+.footer-col a{display:block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:8px;transition:color 0.2s;cursor:pointer;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;}
+.footer-disclaimer{font-size:11px;color:var(--slate);line-height:1.7;max-width:600px;}
+.footer-copy{font-size:11px;color:var(--slate);}
+
+/* ── SUPPORT PAGE ── */
+.support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+.support-card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.support-icon{font-size:36px;margin-bottom:14px;}
+.support-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.support-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+textarea.form-input{resize:vertical;min-height:120px;}
+
+/* ── POLICY PAGE ── */
+.policy-body{max-width:720px;margin:0 auto;}
+.policy-section{background:var(--navy2);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:14px;}
+.policy-section h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--gold);margin-bottom:12px;}
+.policy-section p{font-size:14px;color:var(--muted);line-height:1.9;}
+
+/* ── ANIMATIONS ── */
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.6s ease forwards;}
+.fade-up-delay-1{animation-delay:0.1s;opacity:0;}
+.fade-up-delay-2{animation-delay:0.2s;opacity:0;}
+.fade-up-delay-3{animation-delay:0.3s;opacity:0;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-mockup{display:none;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .support-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .tools-grid{grid-template-columns:1fr;}
+  .examples-grid{grid-template-columns:1fr 1fr;}
+  nav .nav-links{gap:2px;}
+  .nav-link{display:none;}
+  section{padding:56px 16px;}
+}
+@media(max-width:480px){
+  .examples-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none;}
+.page.active{display:block;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NAV -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">
+    <div class="logo-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="7" width="16" height="11" rx="1.5" stroke="#2563EB" stroke-width="1.5"/>
+        <line x1="2" y1="14" x2="18" y2="14" stroke="#2563EB" stroke-width="1.5"/>
+        <line x1="17" y1="13" x2="24" y2="7" stroke="#F8FAFC" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="24,5.5 26,8.5 22,8.5" fill="#F8FAFC"/>
+        <circle cx="22.5" cy="5" r="3" fill="#FBBF24"/>
+        <line x1="22.5" y1="1.5" x2="22.5" y2="0" stroke="#FBBF24" stroke-width="1" stroke-linecap="round"/>
+        <line x1="25" y1="2.5" x2="26.5" y2="1" stroke="#FBBF24" stroke-width="1" stroke-linecap="round"/>
+        <line x1="26" y1="5" x2="28" y2="5" stroke="#FBBF24" stroke-width="1" stroke-linecap="round"/>
+        <line x1="4" y1="10" x2="12" y2="10" stroke="#2563EB" stroke-width="1" opacity="0.7"/>
+        <line x1="4" y1="12.5" x2="9" y2="12.5" stroke="#2563EB" stroke-width="1" opacity="0.7"/>
+        <line x1="10" y1="18" x2="10" y2="22" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="6" y1="22" x2="14" y2="22" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="brand">Digital<span>101</span> AI</div>
+      <div class="tag">Create. Package. Sell.</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" onclick="showPage('home');setTimeout(()=>scrollTo('features'),50)">Features</a>
+    <a class="nav-link" onclick="showPage('home');setTimeout(()=>scrollTo('pricing'),50)">Pricing</a>
+    <a class="nav-link" onclick="showPage('support')">Support</a>
+    <a class="nav-link" onclick="showPage('policy')">Policies</a>
+    <button class="btn-outline" onclick="openCheckout('free')">Log In</button>
+    <button class="btn-gold" onclick="openCheckout('starter')">Start Free Trial</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HOME PAGE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge fade-up">
+          <span></span> AI-Powered Digital Product Builder
+        </div>
+        <h1 class="hero-title fade-up fade-up-delay-1">
+          Create your first digital product <em>faster with AI.</em>
+        </h1>
+        <p class="hero-desc fade-up fade-up-delay-2">
+          Digital101 AI helps beginners turn simple ideas into product plans, Canva prompts, listing copy, pricing suggestions, and launch content — all in one dashboard.
+        </p>
+        <div class="hero-btns fade-up fade-up-delay-3">
+          <button class="btn-gold-lg" onclick="openCheckout('free')">Start Creating Free →</button>
+          <button class="btn-blue-lg" onclick="openCheckout('starter')">Start 3-Day Trial</button>
+        </div>
+        <div class="hero-trust fade-up fade-up-delay-3">
+          <div class="trust-item"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"/></svg>No credit card for free plan</div>
+          <div class="trust-item"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"/></svg>3-day free trial on paid plans</div>
+          <div class="trust-item"><svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"/></svg>Cancel anytime</div>
+        </div>
+      </div>
+      <!-- Dashboard Mockup -->
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dots">
+            <span style="background:#FF5F57"></span>
+            <span style="background:#FEBC2E"></span>
+            <span style="background:#28C840"></span>
+          </div>
+          <div class="mockup-title">Digital101 AI — Dashboard</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-header">
+            <div class="mockup-brand">Digital<em>101</em> AI</div>
+            <div class="mockup-sparks"><small>Sparks</small><strong>12</strong></div>
+          </div>
+          <div class="tool-card" onclick="openCheckout('starter')">
+            <div class="tool-icon" style="background:rgba(251,191,36,0.15)">💡</div>
+            <div class="tool-info"><small>Step 1</small><p>Product Idea Generator</p></div>
+            <div class="tool-arrow">→</div>
+          </div>
+          <div class="tool-card" onclick="openCheckout('starter')">
+            <div class="tool-icon" style="background:rgba(37,99,235,0.15)">📋</div>
+            <div class="tool-info"><small>Step 2</small><p>Digital Product Builder</p></div>
+            <div class="tool-arrow">→</div>
+          </div>
+          <div class="tool-card" onclick="openCheckout('starter')">
+            <div class="tool-icon" style="background:rgba(139,92,246,0.15)">🎨</div>
+            <div class="tool-info"><small>Step 3</small><p>Canva Prompt Generator</p></div>
+            <div class="tool-arrow">→</div>
+          </div>
+          <div class="tool-card" onclick="openCheckout('starter')">
+            <div class="tool-icon" style="background:rgba(16,185,129,0.15)">🛒</div>
+            <div class="tool-info"><small>Step 4</small><p>Listing Writer</p></div>
+            <div class="tool-arrow">→</div>
+          </div>
+          <div class="mockup-nav">
+            <div class="nav-tab active">🏠<div class="nav-tab-dot"></div></div>
+            <div class="nav-tab">⚡</div>
+            <div class="nav-tab">📁</div>
+            <div class="nav-tab">🎓</div>
+            <div class="nav-tab">👤</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="features-strip">
+  <div class="strip-inner">
+    <div class="strip-item"><span>💡</span> Product Idea Generator</div>
+    <div class="strip-item"><span>📋</span> Product Blueprint Builder</div>
+    <div class="strip-item"><span>🎨</span> Canva Prompt Generator</div>
+    <div class="strip-item"><span>🛒</span> Etsy Listing Writer</div>
+    <div class="strip-item"><span>💰</span> Pricing Strategy</div>
+    <div class="strip-item"><span>🚀</span> 7-Day Launch Plan</div>
+    <div class="strip-item"><span>📚</span> KDP Description Helper</div>
+    <div class="strip-item"><span>📱</span> Social Media Captions</div>
+    <div class="strip-item"><span>💡</span> Product Idea Generator</div>
+    <div class="strip-item"><span>📋</span> Product Blueprint Builder</div>
+    <div class="strip-item"><span>🎨</span> Canva Prompt Generator</div>
+    <div class="strip-item"><span>🛒</span> Etsy Listing Writer</div>
+    <div class="strip-item"><span>💰</span> Pricing Strategy</div>
+    <div class="strip-item"><span>🚀</span> 7-Day Launch Plan</div>
+    <div class="strip-item"><span>📚</span> KDP Description Helper</div>
+    <div class="strip-item"><span>📱</span> Social Media Captions</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">AI Tools Inside</span>
+      <h2 class="section-title">7 tools. One dashboard.<br/>Everything you need to launch.</h2>
+      <p class="section-sub">Work through each step in order — from idea to sold product. No experience required.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 1</div>
+        <div class="tf-icon" style="background:rgba(251,191,36,0.12)">💡</div>
+        <div class="tf-title">Product Idea Generator</div>
+        <div class="tf-desc">Answer 5 questions. Get 10 specific product ideas with buyer types, pricing, and platform recommendations — in under 60 seconds.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 2</div>
+        <div class="tf-icon" style="background:rgba(37,99,235,0.12)">📋</div>
+        <div class="tf-title">Digital Product Builder</div>
+        <div class="tf-desc">Pick an idea — AI builds your complete product blueprint. Every page, what goes on it, bonuses to add, and file types to deliver.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 3</div>
+        <div class="tf-icon" style="background:rgba(139,92,246,0.12)">🎨</div>
+        <div class="tf-title">Canva Prompt Generator</div>
+        <div class="tf-desc">Get a copy-paste Canva design prompt with hex color codes, font pairings, layout ideas, and mockup suggestions. No design skills needed.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 4</div>
+        <div class="tf-icon" style="background:rgba(16,185,129,0.12)">🛒</div>
+        <div class="tf-title">Listing Writer</div>
+        <div class="tf-desc">Full Etsy or Gumroad listing — SEO title, hook, description, what's included, 13 SEO tags, download instructions, and refund note.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 5</div>
+        <div class="tf-icon" style="background:rgba(251,191,36,0.12)">💰</div>
+        <div class="tf-title">Price Helper</div>
+        <div class="tf-desc">Recommended price point, 3-tier pricing structure, bundle opportunities, discount strategy, and how to justify your price to buyers.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 6</div>
+        <div class="tf-icon" style="background:rgba(239,68,68,0.12)">🚀</div>
+        <div class="tf-title">Launch Plan Generator</div>
+        <div class="tf-desc">7-day launch plan with daily actions, 5 Instagram captions, Pinterest pin titles, 3 TikTok ideas, email announcement, and thank-you note.</div>
+      </div>
+      <div class="tool-feature-card">
+        <div class="tf-step">Step 7</div>
+        <div class="tf-icon" style="background:rgba(249,115,22,0.12)">📚</div>
+        <div class="tf-title">KDP Description Helper</div>
+        <div class="tf-desc">Amazon KDP title, keyword-rich description, 7 backend keywords, category suggestions, and royalty estimates for low-content books.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section style="background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">Example Products</span>
+      <h2 class="section-title">Products you can build with Digital101 AI</h2>
+      <p class="section-sub">These are real digital product types that sell every day on Etsy, Gumroad, and Amazon KDP.</p>
+    </div>
+    <div class="examples-grid">
+      <div class="ex-card"><div class="ex-type">Planner · Etsy</div><div class="ex-title">Busy Mom Weekly Reset Planner</div><div class="ex-platform">Best platform: Etsy</div><div class="ex-price">$7 – $17</div></div>
+      <div class="ex-card"><div class="ex-type">Checklist · Etsy</div><div class="ex-title">Small Business Budget Checklist</div><div class="ex-platform">Best platform: Etsy / Gumroad</div><div class="ex-price">$5 – $12</div></div>
+      <div class="ex-card"><div class="ex-type">Journal · KDP</div><div class="ex-title">Beginner Garden Journal</div><div class="ex-platform">Best platform: Amazon KDP</div><div class="ex-price">$9 – $17</div></div>
+      <div class="ex-card"><div class="ex-type">Printable · Etsy</div><div class="ex-title">Kids Chore Chart Printable</div><div class="ex-platform">Best platform: Etsy</div><div class="ex-price">$3 – $7</div></div>
+      <div class="ex-card"><div class="ex-type">KDP Book · Amazon</div><div class="ex-title">KDP Gratitude Journal</div><div class="ex-platform">Best platform: Amazon KDP</div><div class="ex-price">$6 – $14</div></div>
+      <div class="ex-card"><div class="ex-type">Bundle · Etsy</div><div class="ex-title">Cleaning Checklist Bundle</div><div class="ex-platform">Best platform: Etsy</div><div class="ex-price">$9 – $19</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">Simple Pricing</span>
+      <h2 class="section-title">Start free. Upgrade when you're ready.</h2>
+      <p class="section-sub">Starter and Pro plans include a 3-day free trial. You will not be charged during the trial period.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- FREE -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0<span> / forever</span></div>
+        <div class="plan-trial" style="color:var(--muted)">No credit card needed</div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature"><span class="check">✓</span> 3 AI generations / month</div>
+        <div class="plan-feature"><span class="check">✓</span> 1 saved product</div>
+        <div class="plan-feature"><span class="check">✓</span> Basic product blueprint</div>
+        <div class="plan-feature"><span class="check">✓</span> Training center access</div>
+        <div class="plan-feature"><span class="cross">✗</span> Canva prompt generator</div>
+        <div class="plan-feature"><span class="cross">✗</span> Listing writer</div>
+        <div class="plan-feature"><span class="cross">✗</span> Launch plan generator</div>
+        <button class="plan-btn" style="background:var(--border);color:var(--white);" onclick="openCheckout('free')">Start Free →</button>
+      </div>
+      <!-- STARTER -->
+      <div class="plan-card popular">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$9.99<span> / month</span></div>
+        <div class="plan-trial">🎁 3-day free trial — no charge today</div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature"><span class="check">✓</span> 25 AI creations / month</div>
+        <div class="plan-feature"><span class="check">✓</span> 10 saved products</div>
+        <div class="plan-feature"><span class="check">✓</span> Canva prompt generator</div>
+        <div class="plan-feature"><span class="check">✓</span> Full listing writer</div>
+        <div class="plan-feature"><span class="check">✓</span> Price helper</div>
+        <div class="plan-feature"><span class="check">✓</span> Email support</div>
+        <div class="plan-feature"><span class="cross">✗</span> Launch plan generator</div>
+        <div class="plan-feature"><span class="cross">✗</span> KDP helper</div>
+        <button class="plan-btn" style="background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;" onclick="openCheckout('starter')">Start 3-Day Free Trial →</button>
+      </div>
+      <!-- PRO -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$19.99<span> / month</span></div>
+        <div class="plan-trial">🎁 3-day free trial — no charge today</div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature"><span class="check">✓</span> 100 AI creations / month</div>
+        <div class="plan-feature"><span class="check">✓</span> Unlimited saved products</div>
+        <div class="plan-feature"><span class="check">✓</span> All Starter features</div>
+        <div class="plan-feature"><span class="check">✓</span> Launch plan generator</div>
+        <div class="plan-feature"><span class="check">✓</span> Social media captions</div>
+        <div class="plan-feature"><span class="check">✓</span> KDP description helper</div>
+        <div class="plan-feature"><span class="check">✓</span> Bundle builder</div>
+        <div class="plan-feature"><span class="check">✓</span> Priority support</div>
+        <button class="plan-btn" style="background:linear-gradient(135deg,#FBBF24,#D97706);color:#0B1220;" onclick="openCheckout('pro')">Start 3-Day Free Trial →</button>
+      </div>
+    </div>
+
+    <!-- Starter Kit -->
+    <div style="background:var(--navy2);border:2px solid var(--gold);border-radius:20px;padding:32px;margin-top:24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;">
+      <div>
+        <div style="font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">🎁 One-Time Purchase · Instant Download</div>
+        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--white);margin-bottom:8px;">Digital101 AI Starter Kit</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;">50 product ideas · 50 Canva prompts · Etsy listing template · KDP template · Pricing guide · 30-day content planner · Launch checklist</div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-size:38px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif;">$17</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:12px;">One-time · No subscription</div>
+        <button class="btn-gold-lg" style="padding:12px 28px;font-size:14px;" onclick="openCheckout('kit')">Buy Starter Kit →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--navy2);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Common questions answered</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need Canva to use Digital101 AI?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Canva is helpful but not required. Digital101 AI gives you a detailed, copy-paste ready design prompt that you can use in Canva or any other design tool. The AI does the planning — you do the designing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Does Digital101 AI design the product for me?<div class="faq-icon">+</div></div>
+        <div class="faq-a">It gives you the product plan, full blueprint, Canva prompt, listing copy, and launch plan. You then take those into Canva or a similar design tool to build the actual product. Think of it as your AI business partner that handles all the strategy so you can focus on creating.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there really a free trial? What happens after?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Yes — Starter and Pro plans both include a genuine 3-day free trial. You will NOT be charged during the trial. If you don't cancel before the trial ends, your subscription begins. You can cancel at any time from your account settings.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is your refund policy?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Refunds are available within 7 days of your first charge if you've used fewer than 5 AI generations. After 7 days, no refunds will be issued. The Starter Kit ($17) is a digital download and is final sale — no refunds. See our full Refund Policy for details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can beginners use it?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Absolutely. Digital101 AI was built specifically for beginners. There's no tech confusion, no blank-page panic, and no experience required. The step-by-step tool order guides you from your very first idea all the way to a launched product.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can Digital101 AI guarantee I'll make sales?<div class="faq-icon">+</div></div>
+        <div class="faq-a">No — and we'll always be honest about that. Digital101 AI is an educational and planning tool. It helps you create and launch faster. Your results depend on your product quality, marketing effort, consistency, and market demand. Most people who try to sell digital products online without consistent effort earn little to nothing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:linear-gradient(135deg,#0D1930,var(--navy2));border-top:1px solid var(--border);text-align:center;">
+  <div class="container" style="max-width:640px;">
+    <div style="font-size:48px;margin-bottom:16px;">⚡</div>
+    <h2 class="section-title">Ready to build your first digital product?</h2>
+    <p class="section-sub center" style="margin-bottom:28px;">Start free today. No credit card needed. Your first product blueprint is minutes away.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-gold-lg" onclick="openCheckout('free')">Start Creating Free →</button>
+      <button class="btn-blue-lg" onclick="openCheckout('starter')">Start 3-Day Free Trial</button>
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:var(--muted);">⚠️ Digital101 AI does not guarantee income or sales. Results depend on your effort, marketing, and product quality.</div>
+  </div>
+</section>
+
+</div><!-- end home page -->
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SUPPORT PAGE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="page-support" class="page">
+<div style="padding-top:88px;">
+<section>
+  <div class="container">
+    <span class="section-label">Help Center</span>
+    <h1 class="section-title">How can we help you?</h1>
+    <p class="section-sub" style="margin-bottom:0;">We respond to all support requests within 2–3 business days.</p>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-icon">📧</div>
+        <div class="support-title">Send a Message</div>
+        <div class="support-desc">Fill out the form below and our team will get back to you within 2–3 business days.</div>
+        <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" placeholder="Jane Smith" id="sup-name"/></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="jane@email.com" id="sup-email"/></div>
+        <div class="form-group"><label class="form-label">Subject</label>
+          <select class="form-input" id="sup-subject">
+            <option value="">Select a topic...</option>
+            <option>Billing / Refund Request</option>
+            <option>Technical Issue</option>
+            <option>Account Help</option>
+            <option>Feature Request</option>
+            <option>General Question</option>
+            <option>Copyright Concern</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="5" placeholder="Describe your issue in detail..." id="sup-message"></textarea></div>
+        <button class="btn-gold-lg" style="width:100%;padding:14px;" onclick="submitSupport()">Send Message →</button>
+        <div id="sup-success" style="display:none;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:8px;padding:14px;text-align:center;margin-top:12px;font-size:13px;color:#6EE7B7;">✅ Message received! We'll reply to your email within 2–3 business days.</div>
+      </div>
+
+      <div>
+        <div class="support-card" style="margin-bottom:16px;">
+          <div class="support-icon">⏱️</div>
+          <div class="support-title">Response Times</div>
+          <div class="support-desc">
+            <strong style="color:var(--white);">General questions:</strong> 2–3 business days<br/>
+            <strong style="color:var(--white);">Billing & refunds:</strong> 1–2 business days<br/>
+            <strong style="color:var(--white);">Technical issues:</strong> 2–3 business days<br/>
+            <strong style="color:var(--white);">Pro plan support:</strong> Priority response
+          </div>
+        </div>
+        <div class="support-card" style="margin-bottom:16px;">
+          <div class="support-icon">📋</div>
+          <div class="support-title">Refund Requests</div>
+          <div class="support-desc">Refunds are available within <strong style="color:var(--gold);">7 days</strong> of your first charge if you've used fewer than 5 AI generations. Select "Billing / Refund Request" in the subject dropdown and include your account email.</div>
+        </div>
+        <div class="support-card">
+          <div class="support-icon">⚠️</div>
+          <div class="support-title">Important Reminder</div>
+          <div class="support-desc" style="color:#D4A017;">Digital101 AI does not guarantee sales or income. Results depend on your effort, product quality, marketing, and market demand. No refunds after 7 days of your first charge.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- POLICY PAGE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="page-policy" class="page">
+<div style="padding-top:88px;">
+<section>
+  <div class="container policy-body">
+    <span class="section-label">Legal</span>
+    <h1 class="section-title" style="margin-bottom:8px;">Policies & Legal</h1>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:36px;">Last updated: April 2026 · Digital101 AI</p>
+
+    <!-- Refund Highlight -->
+    <div style="background:#1A0A0A;border:2px solid var(--red);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+      <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:8px;">⚠️ Key Policy Summary</div>
+      <div style="font-size:13px;color:#FCA5A5;line-height:1.9;">• 3-day FREE trial on Starter & Pro — no charge during trial<br/>• Refunds available within <strong>7 days</strong> of first charge only (if under 5 generations used)<br/>• No refunds after 7 days under any circumstances<br/>• Starter Kit ($17) is a digital download — final sale, no refunds<br/>• No income is guaranteed. Results depend entirely on your effort.</div>
+    </div>
+
+    <div class="policy-section">
+      <h3>Terms of Use</h3>
+      <p>By accessing or using Digital101 AI, you agree to these Terms. Digital101 AI is an AI-powered digital product planning tool. You may not use it to create products that infringe on trademarks, copyrights, or intellectual property rights. Do NOT create products using Disney, Nike, NFL, celebrities, brand names, song lyrics, or any protected content. You own the products you create. Digital101 AI owns the platform, tools, and technology. We may update these Terms at any time. Continued use constitutes acceptance.</p>
+    </div>
+    <div class="policy-section">
+      <h3>Privacy Policy</h3>
+      <p>We collect your name, email, and payment information to provide our service. We NEVER sell your personal information. Data is shared only with Stripe (payments) and analytics tools. We use SSL/TLS encryption to protect your data in transit. Payment info is processed by Stripe — we never store your card numbers. You may request access, correction, or deletion of your data at any time by contacting our support team. We respond to privacy requests within 30 days.</p>
+    </div>
+    <div class="policy-section">
+      <h3>Refund Policy</h3>
+      <p><strong style="color:var(--gold);">7-Day Refund Window:</strong> Refunds are available within 7 days of your first subscription charge if you have used fewer than 5 AI generations total. After 7 days, no refunds are issued under any circumstances.<br/><br/><strong style="color:var(--gold);">3-Day Free Trial:</strong> You will NOT be charged during the trial period. If you don't cancel before the trial ends, your subscription starts and the 7-day refund window opens from that charge date.<br/><br/><strong style="color:var(--gold);">Non-Refundable:</strong> Starter Kit ($17) is a digital download — final sale. No refunds if more than 7 days have passed, more than 5 generations were used, or Terms were violated.<br/><br/><strong style="color:var(--gold);">How to Request:</strong> Contact us via the Support page within the 7-day window. Include your account email. Approved refunds process within 5–10 business days.</p>
+    </div>
+    <div class="policy-section">
+      <h3>Earnings Disclaimer</h3>
+      <p>Digital101 AI does NOT guarantee any specific level of income, sales, or business results. Any income figures mentioned are examples only — not typical results. Your success with digital products depends entirely on: product quality, marketing effort and consistency, market demand, pricing strategy, customer service, and many other factors outside our control. Digital101 AI is an educational and planning tool. It does not create a business for you, guarantee products will sell, or ensure profitability. Building a business takes real work, time, and consistent effort. Most people who try to sell digital products online without consistent effort earn little to nothing.</p>
+    </div>
+    <div class="policy-section">
+      <h3>AI Content Disclaimer</h3>
+      <p>Digital101 AI uses artificial intelligence (Claude by Anthropic) to generate product ideas, blueprints, listing copy, and launch content. AI-generated content may not always be accurate, complete, or suitable for your situation. You are responsible for reviewing all AI-generated content before use. Ensure product ideas are not trademarked or copyrighted. You are solely responsible for ensuring products you create do not infringe on intellectual property rights. AI-generated pricing and platform suggestions are for educational purposes only. Nothing generated constitutes legal, financial, or business advice. Consult qualified professionals for such guidance.</p>
+    </div>
+    <div class="policy-section">
+      <h3>Copyright & Safety Rules</h3>
+      <p>Do NOT create products using: Disney characters, Nike, NFL, NBA, MLB, movie titles, TV show characters, celebrity names or likenesses, song lyrics, Barbie, Hello Kitty, or any other trademarked or copyrighted intellectual property. Create original work only. Check rights before selling on any platform. Digital101 AI is not responsible for any copyright infringement resulting from your use of AI-generated content. Violations may result in account termination without refund.</p>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">Digital<span>101</span> AI</div>
+        <div style="font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">Create. Package. Sell.</div>
+        <p>AI-powered digital product business builder for beginners. Go from idea to launched product — step by step.</p>
+        <p style="margin-top:6px;font-size:12px;color:var(--gold);">Digital101AI.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a onclick="showPage('home');setTimeout(()=>scrollTo('features'),50)">Features</a>
+        <a onclick="showPage('home');setTimeout(()=>scrollTo('pricing'),50)">Pricing</a>
+        <a onclick="openCheckout('kit')">Starter Kit $17</a>
+        <a onclick="openCheckout('free')">Start Free</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a onclick="showPage('support')">Contact Us</a>
+        <a onclick="showPage('policy')">Refund Policy</a>
+        <a onclick="showPage('home');setTimeout(()=>scrollTo('pricing'),50)">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a onclick="showPage('policy')">Terms of Use</a>
+        <a onclick="showPage('policy')">Privacy Policy</a>
+        <a onclick="showPage('policy')">Refund Policy</a>
+        <a onclick="showPage('policy')">Earnings Disclaimer</a>
+        <a onclick="showPage('policy')">AI Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">⚠️ <strong>Earnings Disclaimer:</strong> Digital101 AI is for education and content creation support only. We do not guarantee sales, income, or business results. Success depends on product quality, effort, marketing, and market demand. No refunds after 7 days of first charge.</div>
+      <div class="footer-copy">© 2026 Digital101 AI<br/>All Rights Reserved<br/>Digital101AI.com</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CHECKOUT MODAL -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="checkout-title">Checkout</div>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="trial-badge" class="trial-badge" style="display:none;">🎁 <strong>3-Day Free Trial Included</strong> — You will NOT be charged today. Trial ends in 3 days. Cancel anytime before then.</div>
+
+      <div class="order-box" id="order-summary">
+        <div class="order-row"><span>Plan</span><span id="os-plan" class="val">—</span></div>
+        <div class="order-row"><span>Billing</span><span id="os-billing">—</span></div>
+        <div class="order-row" id="os-discount-row" style="display:none;"><span style="color:var(--green)">Coupon Discount</span><span id="os-discount" style="color:var(--green)">—</span></div>
+        <div class="order-row total"><span>Total Today</span><span class="amount" id="os-total">$0.00</span></div>
+      </div>
+
+      <div id="payment-section">
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" placeholder="Jane Smith" id="cc-name"/></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="jane@email.com" id="cc-email"/></div>
+        <div id="card-fields">
+          <div class="form-group"><label class="form-label">Card Number</label><input class="form-input" placeholder="1234 5678 9012 3456" id="cc-number" maxlength="19" oninput="formatCard(this)"/></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" placeholder="MM / YY" id="cc-exp" maxlength="7"/></div>
+            <div class="form-group"><label class="form-label">CVV</label><input class="form-input" placeholder="123" id="cc-cvv" maxlength="4" type="password"/></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Coupon Code</label>
+            <div class="coupon-row">
+              <input class="form-input" placeholder="Enter code (e.g. CREATOR30)" id="coupon-input" style="text-transform:uppercase"/>
+              <button class="apply-btn" onclick="applyCoupon()">Apply</button>
+            </div>
+            <div id="coupon-msg"></div>
+          </div>
+        </div>
+        <div id="checkout-error" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
+        <button class="btn-gold-lg" style="width:100%;font-size:15px;" id="pay-btn" onclick="processPayment()">—</button>
+        <div class="secure-note">🔒 Secure checkout · Powered by Stripe<br/>By completing this purchase you agree to our <a onclick="closeCheckout();showPage('policy')" style="color:var(--blue);cursor:pointer;">Terms</a> and <a onclick="closeCheckout();showPage('policy')" style="color:var(--blue);cursor:pointer;">Refund Policy</a>.<br/>⚠️ No refunds after 7 days of first charge.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WELCOME / ONBOARDING MODAL -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="welcome-modal">
+  <div class="modal welcome-modal">
+    <div class="welcome-hero">
+      <div class="welcome-emoji">🎉</div>
+      <div class="welcome-title">Welcome Aboard, <span id="wc-name" style="color:var(--gold)">Creator</span>!</div>
+      <div class="welcome-sub">Thank you for joining Digital101 AI. Your account is active and ready to use. Let's build your first digital product! ⚡</div>
+    </div>
+    <div class="welcome-body">
+      <!-- Confirmation -->
+      <div class="confirm-box">
+        <div style="font-size:10px;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:700;">✓ Order Confirmed</div>
+        <div class="confirm-row"><span style="color:var(--muted)">Plan</span><span class="val" id="wc-plan">—</span></div>
+        <div class="confirm-row"><span style="color:var(--muted)">Email</span><span class="val" id="wc-email">—</span></div>
+        <div class="confirm-row"><span style="color:var(--muted)">Charged Today</span><span class="val" id="wc-charged" style="color:var(--gold)">—</span></div>
+        <div class="confirm-row"><span style="color:var(--muted)">Next Bill</span><span class="val" id="wc-next">—</span></div>
+      </div>
+
+      <!-- Personal note -->
+      <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:10px;padding:16px 18px;margin-bottom:18px;font-size:13px;color:var(--muted);line-height:1.8;font-style:italic;">
+        "Thank you for trusting us with your digital product journey. You walked in with an idea — and now you have a tool that helps you build it, package it, and get it into the world. We're genuinely excited for you. Let's create something great together." <strong style="color:var(--gold);display:block;margin-top:8px;font-style:normal;">— The Digital101 AI Team ⚡</strong>
+      </div>
+
+      <!-- Steps -->
+      <div style="font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">Your First Steps</div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num" style="background:rgba(251,191,36,0.15);color:var(--gold)">1</div><div class="step-text">Go to AI Tools → <strong style="color:var(--white)">Product Idea Generator</strong></div></div>
+        <div class="step-item"><div class="step-num" style="background:rgba(37,99,235,0.15);color:var(--blue)">2</div><div class="step-text">Answer 5 questions → Get <strong style="color:var(--white)">10 product ideas</strong></div></div>
+        <div class="step-item"><div class="step-num" style="background:rgba(139,92,246,0.15);color:var(--purple)">3</div><div class="step-text">Click Build My Product → Get your <strong style="color:var(--white)">full blueprint</strong></div></div>
+        <div class="step-item"><div class="step-num" style="background:rgba(16,185,129,0.15);color:var(--green)">4</div><div class="step-text">Canva Prompt → <strong style="color:var(--white)">Design your product</strong></div></div>
+        <div class="step-item"><div class="step-num" style="background:rgba(239,68,68,0.15);color:var(--red)">5</div><div class="step-text">Write Listing → <strong style="color:var(--white)">Launch on Etsy or Gumroad</strong></div></div>
+      </div>
+
+      <div class="disclaimer-box">⚠️ <strong>Remember:</strong> Digital101 AI is an educational and planning tool. No income is guaranteed. Results depend on your effort, product quality, and marketing. Refunds available within 7 days of first charge only.</div>
+
+      <button class="btn-gold-lg" style="width:100%;" onclick="closeWelcome()">⚡ Enter My Dashboard →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- COOKIE BANNER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--navy2);border-top:2px solid var(--gold);padding:16px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;font-size:13px;color:var(--muted);line-height:1.7;">🍪 <strong style="color:var(--white)">Digital101 AI uses cookies</strong> to improve your experience and analyze usage. By continuing, you agree to our <a onclick="showPage('policy')" style="color:var(--blue);cursor:pointer;">Privacy Policy</a>.</div>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="document.getElementById('cookie-banner').remove()" style="background:transparent;border:1px solid var(--border);border-radius:8px;padding:9px 18px;color:var(--muted);font-size:13px;cursor:pointer;font-family:inherit;">Decline</button>
+    <button onclick="document.getElementById('cookie-banner').remove()" class="btn-gold" style="padding:9px 22px;">Accept Cookies</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+// ── PAGE SYSTEM ───────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── FAQ ───────────────────────────────────────────────────────
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(q => q.classList.remove('open'));
+  document.querySelectorAll('.faq-icon.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); el.classList.add('open'); icon.classList.add('open'); }
+}
+
+// ── PLAN DATA ─────────────────────────────────────────────────
+const PLANS = {
+  free:    { name:'Free Plan',          price:0,     billing:'Free forever',       trial:false, cta:'Activate Free Account →' },
+  starter: { name:'Starter Plan',       price:9.99,  billing:'$9.99 / month',      trial:true,  cta:'Start My 3-Day Free Trial →' },
+  pro:     { name:'Pro Plan',           price:19.99, billing:'$19.99 / month',     trial:true,  cta:'Start My 3-Day Free Trial →' },
+  kit:     { name:'Digital101 Starter Kit', price:17, billing:'One-time purchase', trial:false, cta:'Buy Starter Kit — $17 →' },
+};
+
+const COUPONS = {
+  'CREATOR30':  { type:'percent', value:30,  msg:'✓ 30% off applied! You save ${{SAVE}}.' },
+  'SPARK2026':  { type:'free',    value:100, msg:'✓ First month FREE! You pay $0 today.' },
+  'WELCOME10':  { type:'fixed',   value:10,  msg:'✓ $10 discount applied!' },
+  'BETAUSER':   { type:'percent', value:50,  msg:'✓ Beta tester 50% off applied!' },
+  'DIGITAL101': { type:'percent', value:25,  msg:'✓ 25% off applied! Welcome to Digital101 AI!' },
+};
+
+let currentPlan = null;
+let couponDiscount = 0;
+
+// ── CHECKOUT ──────────────────────────────────────────────────
+function openCheckout(planId) {
+  currentPlan = planId;
+  couponDiscount = 0;
+  document.getElementById('coupon-input').value = '';
+  document.getElementById('coupon-msg').innerHTML = '';
+  document.getElementById('checkout-error').style.display = 'none';
+  document.getElementById('os-discount-row').style.display = 'none';
+  const plan = PLANS[planId];
+  document.getElementById('checkout-title').textContent = plan.name;
+  document.getElementById('os-plan').textContent = plan.name;
+  document.getElementById('os-billing').textContent = plan.billing;
+  const trialBadge = document.getElementById('trial-badge');
+  trialBadge.style.display = plan.trial ? 'block' : 'none';
+  updateTotal();
+  document.getElementById('pay-btn').textContent = plan.cta;
+  const cardFields = document.getElementById('card-fields');
+  cardFields.style.display = plan.price === 0 ? 'none' : 'block';
+  document.getElementById('checkout-modal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function updateTotal() {
+  const plan = PLANS[currentPlan];
+  let total = plan.trial ? 0 : plan.price - couponDiscount;
+  total = Math.max(0, total);
+  document.getElementById('os-total').textContent = '$' + total.toFixed(2);
+}
+
+function applyCoupon() {
+  const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+  const msgEl = document.getElementById('coupon-msg');
+  const plan = PLANS[currentPlan];
+  if (!code) { msgEl.innerHTML = '<span class="coupon-error">Please enter a coupon code.</span>'; return; }
+  if (currentPlan === 'free' || currentPlan === 'kit') { msgEl.innerHTML = '<span class="coupon-error">Coupons apply to Starter and Pro plans only.</span>'; return; }
+  const coupon = COUPONS[code];
+  if (!coupon) { msgEl.innerHTML = '<span class="coupon-error">Invalid coupon code. Please check and try again.</span>'; couponDiscount = 0; }
+  else {
+    if (coupon.type === 'percent') couponDiscount = (plan.price * coupon.value) / 100;
+    else if (coupon.type === 'fixed') couponDiscount = Math.min(coupon.value, plan.price);
+    else couponDiscount = plan.price;
+    const saved = couponDiscount.toFixed(2);
+    const msg = coupon.msg.replace('{{SAVE}}', saved);
+    msgEl.innerHTML = `<span class="coupon-success">${msg}</span>`;
+    if (couponDiscount > 0) {
+      document.getElementById('os-discount-row').style.display = 'flex';
+      document.getElementById('os-discount').textContent = '-$' + couponDiscount.toFixed(2);
+    }
+  }
+  updateTotal();
+}
+
+function formatCard(input) {
+  let v = input.value.replace(/\D/g, '').substring(0, 16);
+  input.value = v.replace(/(.{4})/g, '$1 ').trim();
+}
+
+function processPayment() {
+  const plan = PLANS[currentPlan];
+  const name = document.getElementById('cc-name').value.trim();
+  const email = document.getElementById('cc-email').value.trim();
+  const errEl = document.getElementById('checkout-error');
+  if (!name || !email) { errEl.textContent = 'Please fill in your name and email.'; errEl.style.display = 'block'; return; }
+  if (plan.price > 0 && !plan.trial) {
+    const card = document.getElementById('cc-number').value.trim();
+    const exp = document.getElementById('cc-exp').value.trim();
+    const cvv = document.getElementById('cc-cvv').value.trim();
+    if (!card || !exp || !cvv) { errEl.textContent = 'Please fill in all payment fields.'; errEl.style.display = 'block'; return; }
+  }
+  errEl.style.display = 'none';
+  closeCheckout();
+  showWelcome(plan, name, email);
+}
+
+// ── WELCOME MODAL ─────────────────────────────────────────────
+function showWelcome(plan, name, email) {
+  document.getElementById('wc-name').textContent = name.split(' ')[0] || 'Creator';
+  document.getElementById('wc-plan').textContent = plan.name;
+  document.getElementById('wc-email').textContent = email;
+  const charged = plan.trial ? '$0.00 (Trial)' : plan.price === 0 ? '$0.00' : '$' + (plan.price - couponDiscount).toFixed(2);
+  document.getElementById('wc-charged').textContent = charged;
+  const next = plan.trial ? '3 days from today' : plan.price === 0 ? 'Never (free forever)' : 'Next month';
+  document.getElementById('wc-next').textContent = next;
+  document.getElementById('welcome-modal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWelcome() {
+  document.getElementById('welcome-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ── SUPPORT ───────────────────────────────────────────────────
+function submitSupport() {
+  const email = document.getElementById('sup-email').value.trim();
+  const message = document.getElementById('sup-message').value.trim();
+  if (!email || !message) { alert('Please fill in your email and message.'); return; }
+  document.getElementById('sup-success').style.display = 'block';
+  document.getElementById('sup-name').value = '';
+  document.getElementById('sup-email').value = '';
+  document.getElementById('sup-subject').value = '';
+  document.getElementById('sup-message').value = '';
+}
+
+// ── CLOSE ON OVERLAY CLICK ────────────────────────────────────
+document.getElementById('checkout-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCheckout();
+});
+document.getElementById('welcome-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeWelcome();
+});
+</script>
+</body>
+</html>
